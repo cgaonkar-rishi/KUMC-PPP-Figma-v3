@@ -52,23 +52,10 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'build',
-    chunkSizeWarningLimit: 1600,
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('@radix-ui') || id.includes('lucide-react')) {
-              return 'ui-vendor';
-            }
-            if (id.includes('recharts')) {
-              return 'charts';
-            }
-            return 'vendor';
-          }
-        },
+        // manualChunks removed
       },
     },
   },
